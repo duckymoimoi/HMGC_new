@@ -99,9 +99,11 @@ class CheckGPTDetectorForPipeline(RobertaPreTrainedModel):
         )
         features = F.pad(outputs.last_hidden_state, (0, 0, 0, 512 - outputs.last_hidden_state.size(1)))
         logits = self.classifier(features)
-
         return logits
 
 
 if __name__ == '__main__':
     pass
+    # config = RobertaConfig.from_pretrained("roberta-large", num_labels=2)
+    # m = RobertaModel(config).cuda()
+    # print(get_model_complexity_info(m, (512,), as_strings=True, print_per_layer_stat=True))
