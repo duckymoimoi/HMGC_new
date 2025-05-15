@@ -33,7 +33,7 @@ class Attention(nn.Module):
 
         weights = torch.bmm(inputs, self.att_weights.permute(1, 0).unsqueeze(0).repeat(batch_size, 1, 1))
         attentions = torch.softmax(F.relu(weights.squeeze()), dim=-1)
-        mask = torch.ones(attentions.size(), requires_grad=True)
+        mask = torch.ones(attentions.size(), requires_grad=True, device=attentions.device)
         if self.device == "cuda":
             mask = mask.cuda()
         masked = attentions * mask
