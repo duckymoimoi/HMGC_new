@@ -299,7 +299,7 @@ class HC3WhiteBoxEvaluator(object):
 
 def main(args):
     if args.detector.lower() == "checkgpt":
-        evaluator = CheckGPTBlackBoxEvaluator()
+        evaluator = CheckGPTBlackBoxEvaluator(args)
     elif args.detector.lower() == "hc3":
         evaluator = HC3WhiteBoxEvaluator(args)
 
