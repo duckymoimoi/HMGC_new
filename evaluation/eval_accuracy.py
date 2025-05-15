@@ -88,7 +88,8 @@ def get_distributed_model(
 class CheckGPTBlackBoxEvaluator():
     def __init__(self, config):
         self.config = config
-        self.checkgpt_path="./data/CheckGPT/model/Unified_Task123.pth"
+        self.checkgpt_path = config.model_path
+
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.tokenizer = RobertaTokenizer.from_pretrained("roberta-large")
@@ -331,6 +332,7 @@ if __name__ == "__main__":
     parser.add_argument("--detector", type=str, required=True,)
     parser.add_argument("--tests", nargs='+', default=[],)
     parser.add_argument("--output_file", type=str, default=None,)
+    parser.add_argument("--model_path", type=str, required=True, help="Path to CheckGPT model weights (.pth)")
 
     parser.add_argument("--batch_size_per_device", type=int, default=256,)
     parser.add_argument("--origin_key", type=str, default="origin_text",)
