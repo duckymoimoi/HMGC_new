@@ -141,7 +141,7 @@ class CheckGPTBlackBoxEvaluator():
                     samples.append(l_j[ori_key])
         return samples, labels
 
-    def run_eval(self, test_file):
+    def do_eval(self, test_file):
         samples, labels = self.load_test_samples(test_file)
 
         preds = list()
