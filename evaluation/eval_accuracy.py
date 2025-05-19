@@ -117,7 +117,7 @@ class CheckGPTBlackBoxEvaluator():
         tokens = self.tokenizer.encode(item)
         if len(tokens) > 512:
             tokens = tokens[:512]
-            print("!!!Input too long. Truncated to first 512 tokens.")
+            # print("!!!Input too long. Truncated to first 512 tokens.")
         inputs = torch.tensor(tokens).unsqueeze(0).to(self.device)
         outputs = self.model(inputs)
         pred = torch.max(outputs.data, 1)[1]
